@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/")
-public class WelcomeController {
+public class PostController {
 
-    @GetMapping("/welcome")
-    public String getGreeting(){
+    @GetMapping("/posts")
+    public String getPosts(){
         return "Welcome to WestWorld";
     }
 
