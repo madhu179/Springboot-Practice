@@ -2,6 +2,7 @@ package com.practice.demo.service.impl;
 
 import com.practice.demo.entity.Comment;
 import com.practice.demo.entity.Post;
+import com.practice.demo.exception.ResouceNotFoundException;
 import com.practice.demo.payload.CommentDTO;
 import com.practice.demo.repository.CommentRepository;
 import com.practice.demo.repository.PostRepository;
@@ -24,13 +25,13 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public CommentDTO getCommentById(long id) {
-        Comment comment = commentRepository.findById(id).orElseThrow(() -> new RuntimeException("Comment not found"));
+        Comment comment = commentRepository.findById(id).orElseThrow(() -> new ResouceNotFoundException("Comment","id",id));
         return mapToDTO(comment);
     }
 
     @Override
     public CommentDTO addComment(CommentDTO commentDTO, long id) {
-        Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post with id: "+id+" not found"));
+        Post post = postRepository.findById(id).orElseThrow(() -> new ResouceNotFoundException("Post","id",id));
         Comment comment = mapToEntity(commentDTO);
         comment.setPost(post);
         comment = commentRepository.save(comment);

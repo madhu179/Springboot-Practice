@@ -40,16 +40,6 @@ public class PostServiceimpl implements PostService {
 
     private PostDTO mapToDTO(Post post){
         PostDTO postDTO = new PostDTO();
-//        postDTO.setId(post.getId());
-//        postDTO.setTitle(post.getTitle());
-//        postDTO.setDescription(post.getDescription());
-//        postDTO.setContent(post.getContent());
-//        postDTO.setComments(
-//                post.getComments().stream()
-//                        .map((comment) -> new CommentDTO(comment.getId(), comment.getName(), comment.getEmail(), comment.getText()))
-//                        .collect(Collectors.toSet())
-//        );
-//        postDTO.setTags(post.getTags());
         postDTO = modelMapper.map(post, PostDTO.class);
 
         return postDTO;
@@ -57,16 +47,6 @@ public class PostServiceimpl implements PostService {
 
     private Post mapToEntity(PostDTO postDTO){
         Post post = new Post();
-//        post.setId(postDTO.getId());
-//        post.setTitle(postDTO.getTitle());
-//        post.setDescription(postDTO.getDescription());
-//        post.setContent(postDTO.getContent());
-//        post.setComments(
-//                postDTO.getComments().stream()
-//                        .map((comment) -> new Comment(comment.getId(), comment.getName(), comment.getEmail(), comment.getText()))
-//                        .collect(Collectors.toSet())
-//        );
-//        post.setTags(postDTO.getTags());
         post = modelMapper.map(postDTO, Post.class);
         return post;
     }
