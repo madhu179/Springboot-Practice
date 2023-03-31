@@ -14,7 +14,7 @@ import java.util.List;
 public class PostController {
 
     private PostService postService;
-    private PostController(PostService postService){
+    public PostController(PostService postService){
         this.postService = postService;
     }
 
@@ -23,6 +23,7 @@ public class PostController {
         return postService.getPosts();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/post")
     public ResponseEntity addPost(@RequestBody PostDTO postDTO){
         PostDTO postDTO1 = postService.addPost(postDTO);
